@@ -1,6 +1,5 @@
-## SFPC: Recreating the past 1
-### Vera Molnár, 
-
+## Recreating the past 1: Vera Molnár 
+### School for Poetic Computation, Spring 2019
 
 ![Sample output](https://github.com/meltar/sfpc-generative-1-vera-molnar/blob/master/render.gif)
 
