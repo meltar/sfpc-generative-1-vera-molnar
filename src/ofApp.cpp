@@ -13,19 +13,14 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    // todo
-    // replace random margins with a random transform
-    // add feature - randomly use vertical format
-    // turn the main for loop into a more generic method
     float time = ofGetElapsedTimef();
-    cout << (int)time << endl;
-    
     ofSeedRandom((int)time);
+
     ofBackground(255,255,255);
-//    ofSetRectMode(OF_RECTMODE_CENTER);
 
 //    Save as SVG for pen plotting
 //    ofBeginSaveScreenAsSVG("output.svg");
+
     float offset = 0;
     float xMargin = ofRandom(0, 20);
     float yMargin = ofRandom(0, 20);
@@ -35,12 +30,12 @@ void ofApp::draw(){
     float steph = winHeight/10.;
     int count = 10;
     float randomAngle = ofRandom(-3,3);
-    
+
     for (int i = 0; i < count; i++){
         for (int j = 0; j < count/2; j++){
             float x = xMargin + i*stepw + stepw/2;
             float y = yMargin + j*steph + steph/2;
-            
+
             ofPushMatrix();
             ofRotateZDeg(randomAngle);
             ofTranslate(x, y);
@@ -48,8 +43,8 @@ void ofApp::draw(){
             float h = ofMap(2, 0, 3, steph*0.3, steph*0.95 );
             float randomDirection = ofRandom(1,5);
             ofRotateZDeg(90*(int)randomDirection);
-            
-            ofSetColor(200, 0, 0);
+
+            ofSetColor(199, 69, 41);
             ofPolyline line;
             line.addVertex(-w/2, h/2);
             line.addVertex(w/2, h/2);
@@ -60,11 +55,21 @@ void ofApp::draw(){
             line.addVertex((-w/2+w/3), -h/2);
             line.addVertex(-w/2, -h/2);
             line.close();
-            line.draw();
+
+            // To draw the outline of the shape
+            // line.draw();
+
+            // To fill in a polyline shape with color
+            ofBeginShape();
+            for( int i = 0; i < line.getVertices().size(); i++) {
+                ofVertex(line.getVertices().at(i).x, line.getVertices().at(i).y);
+            }
+            ofEndShape();
+
             ofPopMatrix();
         }
     }
-    
+
     offset = ofGetHeight()/2;
     xMargin = ofRandom(0, 20);
     yMargin = ofRandom(0, 10);
@@ -75,12 +80,12 @@ void ofApp::draw(){
     randomAngle = ofRandom(-2,2);
     ofPushMatrix();
     ofTranslate(0,offset);
-    
+
     for (int i = 0; i < count; i++){
         for (int j = 0; j < count/2; j++){
             float x = xMargin + i*stepw + stepw/2;
             float y = yMargin + j*steph + steph/2;
-            
+
             ofPushMatrix();
             ofRotateZDeg(randomAngle);
             ofTranslate(x, y);
@@ -88,8 +93,8 @@ void ofApp::draw(){
             float h = ofMap(2, 0, 3, steph*0.3, steph*0.95 );
             float randomDirection = ofRandom(0,4);
             ofRotateZDeg(90*(int)randomDirection);
-            
-            ofSetColor(200, 0, 0);
+
+            ofSetColor(199, 69, 41);
             ofPolyline line;
             line.addVertex(-w/2, h/2);
             line.addVertex(w/2, h/2);
@@ -100,11 +105,22 @@ void ofApp::draw(){
             line.addVertex((-w/2+w/3), -h/2);
             line.addVertex(-w/2, -h/2);
             line.close();
-            line.draw();
+
+            // To draw the outline of the shape
+            // line.draw();
+
+            // To fill in a polyline shape with color
+            ofBeginShape();
+            for( int i = 0; i < line.getVertices().size(); i++) {
+                ofVertex(line.getVertices().at(i).x, line.getVertices().at(i).y);
+            }
+            ofEndShape();
+
             ofPopMatrix();
         }
     }
     ofPopMatrix();
+
 //    ofEndSaveScreenAsSVG();
 }
 
